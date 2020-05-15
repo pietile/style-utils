@@ -1,0 +1,93 @@
+{
+  "name": "@pietile/style-utils",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "styled-components",
+    "css-in-js",
+    "emotion",
+    "react",
+    "typescript"
+  ],
+  "contributors": [
+    {
+      "name": "Vladislav Shabanov",
+      "email": "vshabanov88@gmail.com",
+      "url": "https://github.com/vshab"
+    },
+    {
+      "name": "Maksim Milyutin",
+      "email": "mmxckk@gmail.com",
+      "url": "https://github.com/mxck"
+    }
+  ],
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prettify": "import-sort --write 'src/**/*.{ts,tsx}' && prettier --write 'src/**/*.{ts,tsx}'"
+  },
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@emotion/core": "~10.0.0",
+    "@emotion/serialize": "~0.11.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "~10.0.0",
+    "@testing-library/react-hooks": "~3.2.0",
+    "@types/jest": "~25.2.0",
+    "@types/react": "~16.9.0",
+    "@typescript-eslint/eslint-plugin": "~2.27.0",
+    "@typescript-eslint/parser": "~2.27.0",
+    "eslint": "~6.8.0",
+    "eslint-config-airbnb": "~18.1.0",
+    "eslint-config-prettier": "~6.10.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "~3.0.0",
+    "husky": "~4.2.0",
+    "import-sort": "~6.0.0",
+    "import-sort-cli": "~6.0.0",
+    "import-sort-parser-typescript": "~6.0.0",
+    "import-sort-style-pietile": "~1.2.0",
+    "jest": "~25.2.0",
+    "lint-staged": "~10.1.0",
+    "microbundle": "~0.12.0",
+    "prettier": "~2.0.0",
+    "react": "~16.13.0",
+    "react-dom": "~16.13.0",
+    "react-test-renderer": "~16.13.0",
+    "rimraf": "~3.0.0",
+    "ts-jest": "~25.3.0",
+    "typescript": "~3.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "import-sort --write",
+      "prettier --write",
+      "git add",
+      "jest --bail --findRelatedTests"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/pietile/style-utils/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pietile/style-utils.git"
+  }
+}
