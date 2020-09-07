@@ -48,6 +48,9 @@
     }
   ],
   "name": "@pietile/styled-utils",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Maksim Milyutin",
   "module": "dist/styled-utils.esm.js",
   "sideEffects": false,
