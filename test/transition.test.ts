@@ -1,4 +1,4 @@
-import { transition, cubicTransition } from '../transition';
+import { transition, cubicTransition } from '../src/transition';
 
 describe('transition', () => {
   it('should return valid value', () => {
