@@ -47,7 +47,7 @@
       "url": "https://github.com/mxck"
     }
   ],
-  "name": "styled-utils",
+  "name": "@pietile/styled-utils",
   "author": "Maksim Milyutin",
   "module": "dist/styled-utils.esm.js",
   "sideEffects": false,
