@@ -1,35 +1,15 @@
-import { SerializedStyles, css } from '@emotion/core';
-import {
-  CSSProperties,
-  CSSPropertiesWithMultiValues,
-} from '@emotion/serialize';
+import { SerializedStyles, css } from '@emotion/react';
+import type { CSSInterpolation } from '@emotion/serialize';
 
-type ValidateStyle<Style> = {
-  [Property in keyof Style]: Property extends keyof CSSProperties
-    ? CSSProperties[Property]
-    : Style[Property] extends CSSProperties
-    ? ValidateStyle<Style[Property]>
-    : never;
-};
+type Styles = Record<string, CSSInterpolation>;
 
-type ValidateStyleSheet<StyleSheet> = {
-  [Key in keyof StyleSheet]: ValidateStyle<StyleSheet[Key]>;
-};
+export function styleSheet<S extends Styles>(styles: S): { [K in keyof S]: SerializedStyles } {
+  const stylesNames = Object.getOwnPropertyNames(styles) as (keyof S)[];
+  const serializedStyles = {} as { [K in keyof S]: SerializedStyles };
 
-type SerializedStyleSheet<StyleSheet> = {
-  [Key in keyof StyleSheet]: SerializedStyles;
-};
-
-export function styleSheet<S extends ValidateStyleSheet<S>>(
-  styles: S,
-): SerializedStyleSheet<S> {
-  const serializedStyles = {} as SerializedStyleSheet<S>;
-
-  Object.entries<CSSPropertiesWithMultiValues>(styles).forEach(
-    ([key, value]): void => {
-      serializedStyles[key as keyof S] = css(value);
-    },
-  );
+  for (const styleName of stylesNames) {
+    serializedStyles[styleName] = css(styles[styleName]);
+  }
 
   return serializedStyles;
 }
