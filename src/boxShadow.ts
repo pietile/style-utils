@@ -24,7 +24,7 @@ interface BoxShadowWithSpread {
   y: number;
   color: string;
   blur: number;
-  spread: never;
+  spread: number;
 }
 
 type BoxShadowOptions = BoxShadow | BoxShadowWithBlur | BoxShadowWithSpread;
@@ -59,8 +59,8 @@ export function boxShadow(...shadowOptions: BoxShadowOptions[]): string {
         inset && 'inset',
         px(x),
         px(y),
-        blur && px(blur),
-        spread && px(spread),
+        blur !== undefined && px(blur),
+        spread !== undefined && px(spread),
         color,
       ]
         .filter(Boolean)
