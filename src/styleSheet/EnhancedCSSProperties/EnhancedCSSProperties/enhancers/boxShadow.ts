@@ -52,7 +52,12 @@ function boxShadowOptionsToString(options: BoxShadowOptions): string {
     .join(' ');
 }
 
-export function boxShadow(value: BoxShadowOptions | BoxShadowOptions[]): string {
+export function boxShadow(value: 'none' | BoxShadowOptions | BoxShadowOptions[]): string {
+  if (value === 'none') {
+    return value;
+  }
+
+
   if (Array.isArray(value)) {
     return value.map(boxShadowOptionsToString).join(', ');
   }
